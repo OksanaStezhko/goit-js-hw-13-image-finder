@@ -1,4 +1,5 @@
 export default {
-  inputSearchRef: document.querySelector('input[name="query"]'),
+  searchFormRef: document.querySelector('#search-form'),
   galleryListRef: document.querySelector('.gallery'),
+  inputRef: document.querySelector('.search-form_input'),
 };

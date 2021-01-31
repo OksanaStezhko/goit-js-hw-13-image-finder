@@ -9,20 +9,18 @@ defaults.delay = 3000;
 
 export default {
   additemList(templ) {
-    // refs.galleryListRef.innerHTML = '';
-    // console.log(templ.status);
-    // if (templ.status === 404) {
-    //   notice({
-    //     text: 'Not found!',
-    //   });
-    //   return;
-    // }
-    // console.log('templ:', templ);
-    // console.log(itemGallery(templ.hits));
-    console.log(refs.galleryListRef);
+    if (templ.status === 404) {
+      notice({
+        text: 'Not found!',
+      });
+      return;
+    }
     refs.galleryListRef.insertAdjacentHTML(
       'beforeend',
       itemGallery(templ.hits),
     );
+  },
+  clearList() {
+    refs.galleryListRef.innerHTML = '';
   },
 };

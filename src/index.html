@@ -18,16 +18,32 @@
   <body>
     <div class="container">
       <form class="search-form" id="search-form">
-        <input
-          type="text"
-          name="query"
-          autocomplete="off"
-          placeholder="Search images..."
-        />
+        <p class="search-form_label">What are we looking for?</p>
+        <div class="input-box">
+          <input
+            class="search-form_input"
+            type="text"
+            name="query"
+            autocomplete="off"
+            placeholder="Search images..."
+          />
+          <button type="button" class="button_reset">
+            <i class="material-icons">clear</i>
+          </button>
+        </div>
       </form>
+
       <ul class="gallery">
         <!-- Список <li> с карточками изображений -->
       </ul>
+      <div class="button_container">
+        <button type="button" class="button_back is-hidden">
+          <i class="material-icons">home</i>
+        </button>
+        <button type="button" class="button_load is-hidden">
+          Load more...
+        </button>
+      </div>
     </div>
   </body>
 </html>
