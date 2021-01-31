@@ -11,10 +11,10 @@ export default class Button {
   hide() {
     this.ref.classList.add('is-hidden');
   }
-  enable() {
-    this.ref.disable = false;
-  }
-  disable() {
-    this.ref.disable = true;
-  }
+  // enable() {
+  //   this.ref.disable = false;
+  // }
+  // disable() {
+  //   this.ref.disable = true;
+  // }
 }

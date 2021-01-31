@@ -3,6 +3,8 @@ import refs from './js/refs';
 import Button from './js/button';
 import addContent from './js/addContent';
 import apiService from './js/apiService.js';
+import * as basicLightbox from 'basiclightbox';
+import '../node_modules/basiclightbox/dist/basicLightbox.min.css';
 
 const buttonLoad = new Button('.button_load', true);
 const buttonBack = new Button('.button_back', true);
@@ -44,7 +46,19 @@ function onClickReset() {
   buttonBack.hide();
 }
 
+function onClickImage(event) {
+  if (event.target.nodeName !== 'IMG') {
+    return;
+  }
+  basicLightbox
+    .create(
+      `<img width="1400" height="900" src="${event.target.dataset.largeimage}">`,
+    )
+    .show();
+}
+
 refs.searchFormRef.addEventListener('submit', onSubmitSearchForm);
+refs.galleryListRef.addEventListener('click', onClickImage);
 buttonLoad.ref.addEventListener('click', onClickLoadMore);
 buttonBack.ref.addEventListener('click', onClickBack);
 buttonReset.ref.addEventListener('click', onClickReset);
