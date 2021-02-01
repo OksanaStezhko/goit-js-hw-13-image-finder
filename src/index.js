@@ -19,8 +19,8 @@ function fetchData() {
       window.scrollTo(0, document.body.scrollHeight);
       buttonLoad.show();
       buttonBack.show();
-      refs.spinnerRef.classList.add('is-hidden');
     }
+    refs.spinnerRef.classList.add('is-hidden');
   });
 }
 
