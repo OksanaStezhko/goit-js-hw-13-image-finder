@@ -24,7 +24,6 @@ export default {
   },
 
   set searchQuery(value) {
-    console.log(value);
     this.query = value;
   },
 

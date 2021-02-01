@@ -1,35 +1,3 @@
-html {
-  box-sizing: border-box;
-}
-
-*,
-*::before,
-*::after {
-  box-sizing: inherit;
-}
-
-body {
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
-    Oxygen-Sans, Ubuntu, Cantarell, 'Helvetica Neue', sans-serif;
-  background-color: #fff;
-  background-color: rgb(240, 233, 233);
-}
-p {
-  margin: 0;
-  padding: 0;
-}
-
-img {
-  max-width: 100%;
-}
-
-.container {
-  margin-left: auto;
-  margin-right: auto;
-  padding: 15px;
-  width: 1600px;
-}
-
 .gallery {
   display: flex;
   flex-wrap: wrap;
@@ -92,21 +60,4 @@ img {
 .button_container {
   display: flex;
   align-items: stretch;
-}
-
-.input-box {
-  display: flex;
-  align-items: stretch;
-}
-.search-form_input {
-  width: 30vw;
-  padding: 5px;
-  margin-right: 5px;
-}
-
-.search-form_label {
-  margin-bottom: 10px;
-}
-.button_back {
-  margin-right: 10px;
 }

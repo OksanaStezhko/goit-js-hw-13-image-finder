@@ -1,7 +1,6 @@
 export default class Button {
   constructor(selector, isHidden, buttonDisable = false) {
     this.ref = document.querySelector(selector);
-
     this.ref.disable = buttonDisable;
     isHidden ? this.hide() : this.show();
   }
@@ -11,6 +10,7 @@ export default class Button {
   hide() {
     this.ref.classList.add('is-hidden');
   }
+
   // enable() {
   //   this.ref.disable = false;
   // }

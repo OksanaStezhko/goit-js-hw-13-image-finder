@@ -1,4 +1,4 @@
-import './styles.css';
+import './sass/styles.scss';
 import refs from './js/refs';
 import Button from './js/button';
 import addContent from './js/addContent';
@@ -11,14 +11,16 @@ const buttonBack = new Button('.button_back', true);
 const buttonReset = new Button('.button_reset', false);
 
 function fetchData() {
+  refs.spinnerRef.classList.remove('is-hidden');
   apiService.fetchData().then(data => {
     addContent.additemList(data);
-    buttonLoad.show();
-    buttonBack.show();
-
-    apiService.increasePage();
-
-    window.scrollTo(0, document.body.scrollHeight);
+    if (data.totalHits > 12) {
+      apiService.increasePage();
+      window.scrollTo(0, document.body.scrollHeight);
+      buttonLoad.show();
+      buttonBack.show();
+      refs.spinnerRef.classList.add('is-hidden');
+    }
   });
 }
 
