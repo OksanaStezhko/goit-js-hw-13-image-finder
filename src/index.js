@@ -14,21 +14,30 @@ function fetchData() {
   refs.spinnerRef.classList.remove('is-hidden');
   apiService.fetchData().then(data => {
     addContent.additemList(data);
-    if (data.totalHits > 12) {
-      apiService.increasePage();
-      window.scrollTo(0, document.body.scrollHeight);
+    window.scrollTo(0, document.body.scrollHeight);
+    if (apiService.isLastPage()) {
+      buttonLoad.disabled();
+    } else {
       buttonLoad.show();
       buttonBack.show();
     }
+
     refs.spinnerRef.classList.add('is-hidden');
   });
+}
+
+function defaultSetting() {
+  apiService.resetPage();
+  addContent.clearList();
+  buttonLoad.hide();
+  buttonLoad.enabled();
+  buttonBack.hide();
 }
 
 function onSubmitSearchForm(event) {
   event.preventDefault();
   apiService.searchQuery = event.target.elements.query.value;
-  apiService.resetPage();
-  addContent.clearList();
+  defaultSetting();
   fetchData();
 }
 
@@ -38,14 +47,12 @@ function onClickLoadMore() {
 
 function onClickBack() {
   window.scrollTo(0, 0);
+  refs.inputRef.focus();
 }
 
 function onClickReset() {
   refs.inputRef.value = '';
-  apiService.resetPage();
-  addContent.clearList();
-  buttonLoad.hide();
-  buttonBack.hide();
+  defaultSetting();
 }
 
 function onClickImage(event) {
