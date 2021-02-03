@@ -5,6 +5,11 @@ import addContent from './js/addContent';
 import apiService from './js/apiService.js';
 import * as basicLightbox from 'basiclightbox';
 import '../node_modules/basiclightbox/dist/basicLightbox.min.css';
+import { defaults, error, notice } from '@pnotify/core';
+defaults.mouseReset = false;
+defaults.delay = 1000;
+defaults.styling = 'material';
+defaults.icons = 'material';
 
 const buttonLoad = new Button('.button_load', true);
 const buttonBack = new Button('.button_back', true);
@@ -14,7 +19,11 @@ function fetchData() {
   refs.spinnerRef.classList.remove('is-hidden');
   apiService.fetchData().then(data => {
     addContent.additemList(data);
-    window.scrollTo(0, document.body.scrollHeight);
+    window.scrollTo({
+      left: 0,
+      top: document.body.scrollHeight,
+      behavior: 'smooth',
+    });
     if (apiService.isLastPage()) {
       buttonLoad.disabled();
     } else {
@@ -36,7 +45,14 @@ function defaultSetting() {
 
 function onSubmitSearchForm(event) {
   event.preventDefault();
-  apiService.searchQuery = event.target.elements.query.value;
+  const searchQuery = event.target.elements.query.value;
+  if (!searchQuery) {
+    notice({
+      text: 'Enter a query, please!',
+    });
+    return;
+  }
+  apiService.searchQuery = searchQuery;
   defaultSetting();
   fetchData();
 }
@@ -46,7 +62,7 @@ function onClickLoadMore() {
 }
 
 function onClickBack() {
-  window.scrollTo(0, 0);
+  window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
   refs.inputRef.focus();
 }
 
